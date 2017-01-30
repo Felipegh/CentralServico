@@ -4,10 +4,12 @@ import java.io.Serializable;
 
 import modelo.AtividadeImpl;
 import modelo.CargoImpl;
+import modelo.DnsImpl;
 import modelo.EquipeImpl;
 import modelo.FalhaImpl;
 import modelo.IAtividade;
 import modelo.ICargo;
+import modelo.IDns;
 import modelo.IEquipe;
 import modelo.IFalha;
 import modelo.IIpResponsavel;
@@ -19,6 +21,7 @@ import modelo.IServico;
 import modelo.IServidor;
 import modelo.ISetor;
 import modelo.ISolFalha;
+import modelo.ITecnico;
 import modelo.IpResponsavelImpl;
 import modelo.MonitoramentoImpl;
 import modelo.RedeImpl;
@@ -28,12 +31,16 @@ import modelo.ServicoImpl;
 import modelo.ServidorImpl;
 import modelo.SetorImpl;
 import modelo.SolFalhaImpl;
+import modelo.TecnicoImpl;
 
 import org.hibernate.Session;
 
 
 public class Repositorios implements Serializable {
-
+	
+	public IDns getDns(){
+		return new DnsImpl(this.getSession());
+	}
 	public IEquipe getEquipe(){
 		return new EquipeImpl(this.getSession());
 	}
@@ -77,6 +84,9 @@ public class Repositorios implements Serializable {
 	public ISetor getSetor(){
 		return new SetorImpl(this.getSession());
 	}
+	public ITecnico getTecnico(){
+		return new TecnicoImpl(this.getSession());
+	}
 
 	public ICargo getCargo(){
 		return new CargoImpl(this.getSession());
@@ -86,8 +96,11 @@ public class Repositorios implements Serializable {
 		return new IpResponsavelImpl(this.getSession());
 	}
 	
+	
 	private Session getSession() {
 		return (Session) FacesUtil.getRequestAttribute("session");
 	}
+
+	
 
 }

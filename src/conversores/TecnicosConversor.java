@@ -7,23 +7,25 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 
-import modelo.ISetor;
+//import modelo.ISetor;
+import modelo.ITecnico;
 import util.Repositorios;
 import entidades.Setor;
+import entidades.Tecnico;
 
 
 
-@FacesConverter(forClass=Setor.class)
-public class SetorConversor implements Converter{
+@FacesConverter(forClass=Tecnico.class)
+public class TecnicosConversor implements Converter{
 
 	private Repositorios repositorios = new Repositorios();
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		Setor retorno = null;
-		ISetor setores = repositorios.getSetor();
+		Tecnico retorno = null;
+		ITecnico tecnicos = repositorios.getTecnico();
 		if (value != null && !value.equals("")) {
-			retorno = setores.porCodigo(new Integer(value));
+			retorno = tecnicos.porCodigo(new Integer(value));
 		if (retorno == null) {
 			String descricaoErro = "Estado não existe";
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, descricaoErro, descricaoErro);
@@ -38,7 +40,7 @@ public class SetorConversor implements Converter{
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value != null) {
-			Integer codigo = ((Setor) value).getCodigo();
+			Integer codigo = ((Tecnico) value).getCodigo();
 			return codigo == null ? "" : codigo.toString();
 		}
 		return null;

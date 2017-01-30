@@ -21,6 +21,7 @@ import javax.persistence.Table;
 @Table
 public class Servidor implements Serializable, Cloneable{
 	private Integer codigo;
+	private Integer codigo_recurso;
 	private String cpu;
 	private String hostname;
 	private String ip;
@@ -36,6 +37,14 @@ public class Servidor implements Serializable, Cloneable{
 	}
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
+	}
+	@Column
+	public Integer getCodigo_recurso() {
+		return codigo_recurso;
+	}
+	@Column
+	public void setCodigo_recurso(Integer codigo_recurso) {
+		this.codigo_recurso = codigo_recurso;
 	}
 	@Column
 	public String getCpu() {
@@ -93,6 +102,7 @@ public class Servidor implements Serializable, Cloneable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((codigo_recurso == null) ? 0 : codigo_recurso.hashCode());
 		result = prime * result + ((cpu == null) ? 0 : cpu.hashCode());
 		result = prime * result
 				+ ((hostname == null) ? 0 : hostname.hashCode());

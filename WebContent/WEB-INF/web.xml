@@ -29,7 +29,7 @@
         of the application -->
     <filter-mapping>
         <filter-name>loginCentral</filter-name>
-        <url-pattern>/site/central/body/*</url-pattern>
+       <url-pattern>/site/central/body/*</url-pattern>
     </filter-mapping>
 	<!-- login filter -->
     <filter>

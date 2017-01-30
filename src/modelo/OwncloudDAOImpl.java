@@ -286,6 +286,7 @@ public class OwncloudDAOImpl implements IOwncloud{
 	    
 	    attributes.add(new LDAPAttribute("cn", pessoaAbobora.getUid()));
 	    attributes.add(new LDAPAttribute("sn", pessoaAbobora.getUid()));
+	    attributes.add(new LDAPAttribute("ou", "owncloud"));
 	    attributes.add(new LDAPAttribute("uid", pessoaAbobora.getUid()));
 	    attributes.add(new LDAPAttribute("userPassword", pessoaAbobora.getUserPassword()));
 	    

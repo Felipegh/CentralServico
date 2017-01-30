@@ -19,10 +19,8 @@ import javax.servlet.http.HttpSession;
 *
 */
 
-
-@WebFilter(urlPatterns="/site/central/body/")
-//@WebFilter(urlPatterns="/site/central/")
-public class FiltroSegurancaCentral implements Filter {
+@WebFilter(urlPatterns="/site/container/body/")
+public class FiltroSegurancaContainer implements Filter {
 
 	@Override
 	public void destroy() {
@@ -39,7 +37,7 @@ public class FiltroSegurancaCentral implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		try {
 			 
-			//Atributo de requisição http 
+			//Atributo de requisição http
 	       HttpServletRequest req = (HttpServletRequest) request;
 	       //Atributo de resposta de requisição http
 	       HttpServletResponse res = (HttpServletResponse) response;
@@ -49,12 +47,12 @@ public class FiltroSegurancaCentral implements Filter {
 	       String reqURI = req.getRequestURI();
 	       //Comparando se os atributos de sessão estão nulos, se não forem o sistema libera o acesso para a pagina solicitada
 			//senão redireciona o usuario para pagina de login do sistema.
-	       if (  (ses != null && ses.getAttribute("usuarioCentral") != null && ses.getAttribute("senhaCentral") != null)
-	                                  || reqURI.indexOf("/site/central/body/") >= 0 && reqURI.contains("javax.faces.resource") )
+	       if (  (ses != null && ses.getAttribute("usuarioContainer") != null && ses.getAttribute("senhaContainer") != null)
+	                                  || reqURI.indexOf("/site/container/body/") >= 0 && reqURI.contains("javax.faces.resource") )
 	              chain.doFilter(request, response);
 	       else   
 	       	//Usuario não tem sessao aberta ainda, portanto o servidor redireciona ele para a pagina de login.
-	              res.sendRedirect(req.getContextPath() + "/site/central/login.xhtml");  
+	              res.sendRedirect(req.getContextPath() + "/site/container/login.xhtml");  
 	 }
 	catch(Throwable t) {
 	    System.out.println( t.getMessage());

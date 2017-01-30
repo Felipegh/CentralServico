@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+	
+			<h:form>	
+	
+          	<div class="table-responsive">
+   				<p:dataTable tableStyleClass="table table-striped" value="#{cadastroTecnicosBean.tecnicos}" var="tecnico">
+      		<p:column headerText="Nome">
+         		<h:outputText value="#{tecnico.nome}"/>
+      		</p:column>
+      		<p:column headerText="Numero do Telefone Movel">
+         		<h:outputText value="#{tecnico.cel}"/>
+      		</p:column>
+      		<p:column headerText="Numero do Telefone Fixo">
+         		<h:outputText value="#{tecnico.fixo}"/>
+      		</p:column>
+      		<p:column headerText="Ramal">
+         		<h:outputText value="#{tecnico.ramal}"/>
+      		</p:column>
+      		<p:column headerText="E-mail">
+         		<h:outputText value="#{tecnico.email}"/>
+      		</p:column>
+      		<p:column headerText="Local">
+         		<h:outputText value="#{tecnico.local}"/>
+      		</p:column>
+      		<p:column headerText="Cargo/Função">
+         		<h:outputText value="#{tecnico.cargo}"/>
+      		</p:column>
+      		<p:column headerText="vinculo">
+         		<h:outputText value="#{tecnico.vinculo}"/>
+      		</p:column>
+      		
+      		<p:column>
+					<h:link outcome="CadastroTecnicos" value="Editar">
+					<i class="icon-edit"></i>
+					<f:param name="codigo"  value="#{tecnico.codigo}"/>
+					</h:link>
+			</p:column>
+			
+			<p:column>
+				<h:commandLink value="Excluir"
+				 action="#{cadastroTecnicosBean.excluir(tecnico)}"
+				 onclick="if (!confirm('Confirmar a exclusão deste Técnico? ')) return false"/>
+				 <i class="icon-remove-sign"></i>
+			</p:column>
+			
+   				</p:dataTable>
+			</div>			
+			</h:form>			
+			
+
+
+
+</ui:composition>

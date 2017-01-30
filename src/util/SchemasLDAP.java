@@ -14,6 +14,7 @@ import com.novell.ldap.LDAPAttribute;
 import com.novell.ldap.LDAPAttributeSet;
 
 import entidades.Nslcd;
+import entidades.PessoaContainer;
 import entidades.PessoaWifi;
 import entidades.Registro;
 
@@ -85,6 +86,30 @@ public class SchemasLDAP {
 		}
 	    //attributes.add(new LDAPAttribute("pwdAttribute", "userPassword"));
 	    //attributes.add(new LDAPAttribute("pwdPolicySubentry", pessoaWifi.getValidade()));
+		return attributes;
+
+		
+	}
+	
+	public LDAPAttributeSet adicionarPessoaContainer(PessoaContainer pessoaContainer){
+		LDAPAttributeSet attributes = new LDAPAttributeSet();
+		
+		String[] objectClass = new String[8];
+	    objectClass[0] = "top";
+	    objectClass[1] = "account";
+	    objectClass[2] = "posixAccount";
+	    objectClass[3] = "shadowAccount";
+
+
+	    attributes.add(new LDAPAttribute("objectClass", objectClass));
+	    
+	    attributes.add(new LDAPAttribute("cn", pessoaContainer.getUid()));
+	    attributes.add(new LDAPAttribute("uid", pessoaContainer.getUid()));
+	    attributes.add(new LDAPAttribute("gidNumber", "10"));
+	    attributes.add(new LDAPAttribute("uidNumber", "2226"));
+	    attributes.add(new LDAPAttribute("ou", "admin"));
+	    attributes.add(new LDAPAttribute("homeDirectory", "/home/"+pessoaContainer.getUid()));
+	    attributes.add(new LDAPAttribute("userPassword", pessoaContainer.getSenha()));
 		return attributes;
 
 		

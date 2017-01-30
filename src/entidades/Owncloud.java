@@ -13,6 +13,7 @@ public class Owncloud implements Serializable{
 		private String uid;
 		private String cn;
 		private String sn;
+		private String ou;
 		private String userPassword;
 		private String modificador;
 		private Date ultimaModificacao;
@@ -23,6 +24,13 @@ public class Owncloud implements Serializable{
 
 		public void setUid(String uid) {
 			this.uid = uid;
+		}
+		public String getOu() {
+			return ou;
+		}
+
+		public void setOu(String ou) {
+			this.ou = ou;
 		}
 
 		public String getCn() {

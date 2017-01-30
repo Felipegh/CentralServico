@@ -27,6 +27,8 @@
 		<mapping class="entidades.Setor"/>
 		<mapping class="entidades.Cargo"/>
 		<mapping class="entidades.IpResponsavel"/>
+		<mapping class="entidades.Tecnico"/>
+		<mapping class="entidades.Dns"/>
 
 	</session-factory>
 </hibernate-configuration>
